@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.previewInfoBox = new System.Windows.Forms.GroupBox();
             this.difficultyLabel = new System.Windows.Forms.Label();
             this.nameLabel = new System.Windows.Forms.Label();
@@ -45,15 +46,24 @@
             this.chapterCheckpoint = new System.Windows.Forms.NumericUpDown();
             this.ChapterLabel = new System.Windows.Forms.Label();
             this.quickSave_Chapter = new System.Windows.Forms.ComboBox();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.tools_info = new System.Windows.Forms.ToolStripLabel();
-            this.tools_Chapter = new System.Windows.Forms.ToolStripLabel();
-            this.tools_Global = new System.Windows.Forms.ToolStripLabel();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tabs = new System.Windows.Forms.TabControl();
+            this.GeneralStats = new System.Windows.Forms.TabPage();
+            this.ChapterInfo = new System.Windows.Forms.TabPage();
+            this.CI_ChapterDataGroup = new System.Windows.Forms.GroupBox();
+            this.CI_CD_Completed = new System.Windows.Forms.CheckBox();
+            this.CI_CD_Unlocked = new System.Windows.Forms.CheckBox();
+            this.CI_ChapterSelect = new System.Windows.Forms.ComboBox();
+            this.CI_CS_Label = new System.Windows.Forms.Label();
+            this.Tabs_Global = new System.Windows.Forms.TabPage();
             this.previewInfoBox.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.quickSaveGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chapterCheckpoint)).BeginInit();
-            this.toolStrip1.SuspendLayout();
+            this.tabs.SuspendLayout();
+            this.GeneralStats.SuspendLayout();
+            this.ChapterInfo.SuspendLayout();
+            this.CI_ChapterDataGroup.SuspendLayout();
             this.SuspendLayout();
             // 
             // previewInfoBox
@@ -62,7 +72,7 @@
             this.previewInfoBox.Controls.Add(this.nameLabel);
             this.previewInfoBox.Controls.Add(this.difficultyInput);
             this.previewInfoBox.Controls.Add(this.nameInput);
-            this.previewInfoBox.Location = new System.Drawing.Point(12, 52);
+            this.previewInfoBox.Location = new System.Drawing.Point(15, 6);
             this.previewInfoBox.Name = "previewInfoBox";
             this.previewInfoBox.Size = new System.Drawing.Size(200, 100);
             this.previewInfoBox.TabIndex = 0;
@@ -170,7 +180,7 @@
             this.quickSaveGroup.Controls.Add(this.chapterCheckpoint);
             this.quickSaveGroup.Controls.Add(this.ChapterLabel);
             this.quickSaveGroup.Controls.Add(this.quickSave_Chapter);
-            this.quickSaveGroup.Location = new System.Drawing.Point(12, 158);
+            this.quickSaveGroup.Location = new System.Drawing.Point(15, 112);
             this.quickSaveGroup.Name = "quickSaveGroup";
             this.quickSaveGroup.Size = new System.Drawing.Size(200, 100);
             this.quickSaveGroup.TabIndex = 2;
@@ -225,46 +235,128 @@
             this.quickSave_Chapter.TabIndex = 0;
             this.quickSave_Chapter.SelectedIndexChanged += new System.EventHandler(this.quickSave_Chapter_SelectedIndexChanged);
             // 
-            // toolStrip1
+            // contextMenuStrip1
             // 
-            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tools_info,
-            this.tools_Chapter,
-            this.tools_Global});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(800, 25);
-            this.toolStrip1.TabIndex = 3;
-            this.toolStrip1.Text = "toolStrip1";
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // tools_info
+            // tabs
             // 
-            this.tools_info.Name = "tools_info";
-            this.tools_info.Size = new System.Drawing.Size(28, 22);
-            this.tools_info.Text = "Info";
+            this.tabs.Controls.Add(this.GeneralStats);
+            this.tabs.Controls.Add(this.ChapterInfo);
+            this.tabs.Controls.Add(this.Tabs_Global);
+            this.tabs.Location = new System.Drawing.Point(12, 28);
+            this.tabs.Name = "tabs";
+            this.tabs.SelectedIndex = 0;
+            this.tabs.Size = new System.Drawing.Size(776, 410);
+            this.tabs.TabIndex = 5;
             // 
-            // tools_Chapter
+            // GeneralStats
             // 
-            this.tools_Chapter.Name = "tools_Chapter";
-            this.tools_Chapter.Size = new System.Drawing.Size(77, 22);
-            this.tools_Chapter.Text = "Chapter Stuff";
+            this.GeneralStats.Controls.Add(this.previewInfoBox);
+            this.GeneralStats.Controls.Add(this.quickSaveGroup);
+            this.GeneralStats.Location = new System.Drawing.Point(4, 22);
+            this.GeneralStats.Name = "GeneralStats";
+            this.GeneralStats.Padding = new System.Windows.Forms.Padding(3);
+            this.GeneralStats.Size = new System.Drawing.Size(768, 384);
+            this.GeneralStats.TabIndex = 0;
+            this.GeneralStats.Text = "General Stats";
+            this.GeneralStats.UseVisualStyleBackColor = true;
             // 
-            // tools_Global
+            // ChapterInfo
             // 
-            this.tools_Global.Name = "tools_Global";
-            this.tools_Global.Size = new System.Drawing.Size(41, 22);
-            this.tools_Global.Text = "Global";
+            this.ChapterInfo.Controls.Add(this.CI_ChapterDataGroup);
+            this.ChapterInfo.Location = new System.Drawing.Point(4, 22);
+            this.ChapterInfo.Name = "ChapterInfo";
+            this.ChapterInfo.Padding = new System.Windows.Forms.Padding(3);
+            this.ChapterInfo.Size = new System.Drawing.Size(768, 384);
+            this.ChapterInfo.TabIndex = 1;
+            this.ChapterInfo.Text = "Chapter Info";
+            this.ChapterInfo.UseVisualStyleBackColor = true;
+            // 
+            // CI_ChapterDataGroup
+            // 
+            this.CI_ChapterDataGroup.Controls.Add(this.CI_CD_Completed);
+            this.CI_ChapterDataGroup.Controls.Add(this.CI_CD_Unlocked);
+            this.CI_ChapterDataGroup.Controls.Add(this.CI_ChapterSelect);
+            this.CI_ChapterDataGroup.Controls.Add(this.CI_CS_Label);
+            this.CI_ChapterDataGroup.Location = new System.Drawing.Point(6, 6);
+            this.CI_ChapterDataGroup.Name = "CI_ChapterDataGroup";
+            this.CI_ChapterDataGroup.Size = new System.Drawing.Size(294, 173);
+            this.CI_ChapterDataGroup.TabIndex = 8;
+            this.CI_ChapterDataGroup.TabStop = false;
+            this.CI_ChapterDataGroup.Text = "Chapter Data";
+            // 
+            // CI_CD_Completed
+            // 
+            this.CI_CD_Completed.AutoSize = true;
+            this.CI_CD_Completed.Location = new System.Drawing.Point(133, 55);
+            this.CI_CD_Completed.Name = "CI_CD_Completed";
+            this.CI_CD_Completed.Size = new System.Drawing.Size(76, 17);
+            this.CI_CD_Completed.TabIndex = 9;
+            this.CI_CD_Completed.Text = "Completed";
+            this.CI_CD_Completed.UseVisualStyleBackColor = true;
+            this.CI_CD_Completed.CheckedChanged += new System.EventHandler(this.CI_CD_Completed_CheckedChanged_1);
+            // 
+            // CI_CD_Unlocked
+            // 
+            this.CI_CD_Unlocked.AutoSize = true;
+            this.CI_CD_Unlocked.Location = new System.Drawing.Point(133, 32);
+            this.CI_CD_Unlocked.Name = "CI_CD_Unlocked";
+            this.CI_CD_Unlocked.Size = new System.Drawing.Size(72, 17);
+            this.CI_CD_Unlocked.TabIndex = 8;
+            this.CI_CD_Unlocked.Text = "Unlocked";
+            this.CI_CD_Unlocked.UseVisualStyleBackColor = true;
+            this.CI_CD_Unlocked.CheckedChanged += new System.EventHandler(this.CI_CD_Unlocked_CheckedChanged_1);
+            // 
+            // CI_ChapterSelect
+            // 
+            this.CI_ChapterSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CI_ChapterSelect.FormattingEnabled = true;
+            this.CI_ChapterSelect.Items.AddRange(new object[] {
+            "Swamp",
+            "Fortress",
+            "Storm Drain",
+            "Yard",
+            "Temple",
+            "Internet",
+            "Docks",
+            "Hollow",
+            "Skullrock",
+            "Delusion",
+            "Pit Of Despair",
+            "Acropolis"});
+            this.CI_ChapterSelect.Location = new System.Drawing.Point(6, 30);
+            this.CI_ChapterSelect.Name = "CI_ChapterSelect";
+            this.CI_ChapterSelect.Size = new System.Drawing.Size(121, 21);
+            this.CI_ChapterSelect.TabIndex = 6;
+            this.CI_ChapterSelect.SelectedIndexChanged += new System.EventHandler(this.CI_ChapterSelect_SelectedIndexChanged);
+            // 
+            // CI_CS_Label
+            // 
+            this.CI_CS_Label.AutoSize = true;
+            this.CI_CS_Label.Location = new System.Drawing.Point(3, 14);
+            this.CI_CS_Label.Name = "CI_CS_Label";
+            this.CI_CS_Label.Size = new System.Drawing.Size(44, 13);
+            this.CI_CS_Label.TabIndex = 7;
+            this.CI_CS_Label.Text = "Chapter";
+            // 
+            // Tabs_Global
+            // 
+            this.Tabs_Global.Location = new System.Drawing.Point(4, 22);
+            this.Tabs_Global.Name = "Tabs_Global";
+            this.Tabs_Global.Padding = new System.Windows.Forms.Padding(3);
+            this.Tabs_Global.Size = new System.Drawing.Size(768, 384);
+            this.Tabs_Global.TabIndex = 2;
+            this.Tabs_Global.Text = "Global";
+            this.Tabs_Global.UseVisualStyleBackColor = true;
             // 
             // PogoSaveEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.quickSaveGroup);
-            this.Controls.Add(this.previewInfoBox);
+            this.Controls.Add(this.tabs);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "PogoSaveEditor";
@@ -276,8 +368,11 @@
             this.quickSaveGroup.ResumeLayout(false);
             this.quickSaveGroup.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chapterCheckpoint)).EndInit();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.tabs.ResumeLayout(false);
+            this.GeneralStats.ResumeLayout(false);
+            this.ChapterInfo.ResumeLayout(false);
+            this.CI_ChapterDataGroup.ResumeLayout(false);
+            this.CI_ChapterDataGroup.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -300,12 +395,18 @@
         private System.Windows.Forms.Label difficultyLabel;
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.Label ChapterLabel;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripLabel tools_info;
-        private System.Windows.Forms.ToolStripLabel tools_Chapter;
-        private System.Windows.Forms.ToolStripLabel tools_Global;
         private System.Windows.Forms.Label checkpointLabel;
         private System.Windows.Forms.NumericUpDown chapterCheckpoint;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.TabControl tabs;
+        private System.Windows.Forms.TabPage GeneralStats;
+        private System.Windows.Forms.TabPage ChapterInfo;
+        private System.Windows.Forms.TabPage Tabs_Global;
+        private System.Windows.Forms.ComboBox CI_ChapterSelect;
+        private System.Windows.Forms.GroupBox CI_ChapterDataGroup;
+        private System.Windows.Forms.Label CI_CS_Label;
+        private System.Windows.Forms.CheckBox CI_CD_Completed;
+        private System.Windows.Forms.CheckBox CI_CD_Unlocked;
     }
 }
 

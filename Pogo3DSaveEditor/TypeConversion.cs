@@ -55,16 +55,17 @@
                 case 0:
                     chapter = "Swamp";
                     break;
+
                 case 1:
                     chapter = "Fortress";
-                    break; 
+                    break;
 
                 case 2:
-                    chapter = "Storm Drain"; 
+                    chapter = "Storm Drain";
                     break;
 
                 case 3:
-                    chapter = "Yard"; 
+                    chapter = "Yard";
                     break;
 
                 case 4:
@@ -100,7 +101,7 @@
                     break;
             }
 
-            return chapter; 
+            return chapter;
         }
 
         public static int chapterToInt(string chapter)
@@ -112,36 +113,47 @@
                 case "Swamp":
                     index = 0;
                     break;
+
                 case "Fortress":
                     index = 1;
                     break;
+
                 case "Storm Drain":
                     index = 2;
                     break;
+
                 case "Yard":
                     index = 3;
                     break;
+
                 case "Temple":
                     index = 4;
                     break;
+
                 case "Internet":
                     index = 5;
                     break;
+
                 case "Docks":
                     index = 6;
                     break;
+
                 case "Hollow":
                     index = 7;
                     break;
+
                 case "Skullrock":
                     index = 8;
                     break;
+
                 case "Delusion":
                     index = 9;
                     break;
+
                 case "Pit Of Despair":
                     index = 10;
                     break;
+
                 case "Acropolis":
                     index = 11;
                     break;

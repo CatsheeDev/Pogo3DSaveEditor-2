@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 
@@ -11,7 +12,7 @@ namespace Pogo3DSaveEditor
         {
             InitializeComponent();
             SaveCheck();
-            instance = this; 
+            instance = this;
 
         }
 
@@ -24,7 +25,7 @@ namespace Pogo3DSaveEditor
         private string defaultFileLocation = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "HEDGEWIZARDS\\pogo");
 
         private string difficulty = null;
-        private string chapter = null; 
+        private string chapter = null;
         private string name = null;
         private FileTypeEnum fileType = FileTypeEnum.None;
 
@@ -40,13 +41,15 @@ namespace Pogo3DSaveEditor
 
         private void saveSaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Saving preview data
+            // Saving preview data
             saveData.previewData.name = nameInput.Text;
             saveData.previewData.difficulty = TypeConversion.difficultyToInt(difficultyInput.Text);
 
-            //Saving quick save data
+            // Saving quick save data
             saveData.quickSaveData.ChapterId.ChapterNumber = TypeConversion.chapterToInt(quickSave_Chapter.Text);
             saveData.quickSaveData.checkpointId.CheckpointNumber = (int)chapterCheckpoint.Value;
+
+            //chapter shit is done in the respected methods
 
             SaveFileDialog fileSaver = new SaveFileDialog();
             fileSaver.Filter = "Save files (*.sav)|*.sav";
@@ -103,8 +106,11 @@ namespace Pogo3DSaveEditor
             nameInput.Enabled = false;
             difficultyInput.Enabled = false;
             quickSave_Chapter.Enabled = false;
-            chapterCheckpoint.Enabled = false; 
+            chapterCheckpoint.Enabled = false;
             saveSaveToolStripMenuItem.Enabled = false;
+            CI_CD_Completed.Enabled = false;
+            CI_CD_Unlocked.Enabled = false;
+            CI_ChapterSelect.Enabled = false;
         }
 
         void EnableAll()
@@ -114,25 +120,51 @@ namespace Pogo3DSaveEditor
             quickSave_Chapter.Enabled = true;
             saveSaveToolStripMenuItem.Enabled = true;
             chapterCheckpoint.Enabled = true;
-            tools_Global.Enabled = false;
+            CI_CD_Completed.Enabled = true;
+            CI_CD_Unlocked.Enabled = true;
+            CI_ChapterSelect.Enabled = true;
         }
         public void SaveCheck()
         {
             switch (fileType)
             {
                 case FileTypeEnum.Slot:
-                    EnableAll(); 
+                    EnableAll();
                     break;
 
-                case FileTypeEnum.None: 
+                case FileTypeEnum.None:
                     DisableAll();
                     break;
 
                 case FileTypeEnum.Global:
                     DisableAll();
-                    tools_Global.Enabled = true;
                     break;
             }
+        }
+
+        private void CI_ChapterSelect_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int chapterNumber = CI_ChapterSelect.SelectedIndex;
+
+            bool complete = saveData.chapterProgressDatas[0][chapterNumber].complete;
+            bool unlocked = saveData.chapterProgressDatas[0][chapterNumber].unlocked;
+
+            CI_CD_Unlocked.Checked = complete;
+            CI_CD_Completed.Checked = unlocked;
+        }
+
+        private void CI_CD_Unlocked_CheckedChanged_1(object sender, EventArgs e)
+        {
+            int chapterNumber = CI_ChapterSelect.SelectedIndex;
+            saveData.chapterProgressDatas[0][chapterNumber].unlocked = CI_CD_Unlocked.Checked;
+            Console.WriteLine(saveData.chapterProgressDatas[0][chapterNumber].unlocked);
+        }
+
+        private void CI_CD_Completed_CheckedChanged_1(object sender, EventArgs e)
+        {
+            int chapterNumber = CI_ChapterSelect.SelectedIndex;
+            saveData.chapterProgressDatas[0][chapterNumber].complete = CI_CD_Completed.Checked;
+            Console.WriteLine(saveData.chapterProgressDatas[0][chapterNumber].complete);
         }
     }
 }
