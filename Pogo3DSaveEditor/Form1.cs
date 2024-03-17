@@ -46,7 +46,8 @@ namespace Pogo3DSaveEditor
 
             //Saving quick save data
             saveData.quickSaveData.ChapterId.ChapterNumber = TypeConversion.chapterToInt(quickSave_Chapter.Text);
-            saveData.quickSaveData.checkpointId.CheckpointNumber = chapterCheckpoint.Value; 
+            saveData.quickSaveData.checkpointId.CheckpointNumber = (int)chapterCheckpoint.Value;
+
             SaveFileDialog fileSaver = new SaveFileDialog();
             fileSaver.Filter = "Save files (*.sav)|*.sav";
             fileSaver.InitialDirectory = defaultFileLocation;
